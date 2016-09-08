@@ -46,6 +46,9 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | user | delete a person | can remove entries that I no longer need
 `* * *` | user | find a person by name | locate details of persons without having to go through the entire list
 `* *` | user | hide [private contact details](#private-contact-detail) by default | to minimize chance of someone else seeing them by accident
+`* *` | user | delete every entry | start with an empty addressbook again
+`* *` | user | edit the details of a person | correct wrongly entered details or update personal details
+`* *` | user | list all current persons in addressbook | monitor the data on addressbook and keep track of persons
 `*` | user with many persons in the address book | sort persons by name | locate a person easily
 
 
