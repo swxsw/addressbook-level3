@@ -20,6 +20,7 @@ public class FindCommand extends Command {
     private final Set<String> keywords;
 
     public FindCommand(Set<String> keywords) {
+        this.mutating = false;
         this.keywords = keywords;
     }
 
@@ -51,6 +52,10 @@ public class FindCommand extends Command {
             }
         }
         return matchedPersons;
+    }
+    
+    public boolean isMutating(){
+        return this.mutating;
     }
 
 }

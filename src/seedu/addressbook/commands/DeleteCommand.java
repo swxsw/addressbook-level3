@@ -22,6 +22,7 @@ public class DeleteCommand extends Command {
 
     public DeleteCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
+        this.mutating = true;
     }
 
 
@@ -37,6 +38,10 @@ public class DeleteCommand extends Command {
         } catch (PersonNotFoundException pnfe) {
             return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         }
+    }
+    
+    public boolean isMutating(){
+        return this.mutating;
     }
 
 }

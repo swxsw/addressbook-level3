@@ -21,10 +21,14 @@ public class HelpCommand extends Command {
             + "\n" + HelpCommand.MESSAGE_USAGE
             + "\n" + ExitCommand.MESSAGE_USAGE;
 
-    public HelpCommand() {}
+    public HelpCommand() { this.mutating = false; }
 
     @Override
     public CommandResult execute() {
         return new CommandResult(MESSAGE_ALL_USAGES);
+    }
+    
+    public boolean isMutating(){
+        return this.mutating;
     }
 }

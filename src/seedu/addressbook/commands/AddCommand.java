@@ -47,6 +47,7 @@ public class AddCommand extends Command {
                 new Address(address, isAddressPrivate),
                 new UniqueTagList(tagSet)
         );
+        this.mutating = true;
     }
 
     public AddCommand(Person toAdd) {
@@ -65,6 +66,10 @@ public class AddCommand extends Command {
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
+    }
+    
+    public boolean isMutating(){
+        return this.mutating;
     }
 
 }

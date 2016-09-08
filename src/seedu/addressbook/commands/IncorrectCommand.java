@@ -9,12 +9,17 @@ public class IncorrectCommand extends Command{
     public final String feedbackToUser;
 
     public IncorrectCommand(String feedbackToUser){
+        this.mutating = false;
         this.feedbackToUser = feedbackToUser;
     }
 
     @Override
     public CommandResult execute() {
         return new CommandResult(feedbackToUser);
+    }
+    
+    public boolean isMutating(){
+        return this.mutating;
     }
 
 }
