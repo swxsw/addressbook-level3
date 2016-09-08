@@ -66,6 +66,14 @@ Priority | As a ... | I want to ... | So that I can...
 4. AddressBook deletes the person <br>
 Use case ends.
 
+1. User finds a person
+2. AddressBook shows the details of the person
+3. User edits the tags associated with the person
+4. AddressBook asks user for confirmation of the change
+5. User confirms the intention to change tags of the person
+6. AddressBook updates and tags of the person and shows the updated person details
+Use case ends.
+
 **Extensions**
 
 2a. The list is empty
