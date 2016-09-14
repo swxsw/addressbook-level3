@@ -43,6 +43,9 @@ public abstract class Command {
      */
     public abstract CommandResult execute() throws Exception;
     
+    /**
+     * Returns true if command could potentially mutate data, false otherwise.
+     */
     public abstract boolean isMutating();
 
     /**
