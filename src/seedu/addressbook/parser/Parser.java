@@ -25,6 +25,8 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+    
+    private HashMap<String, Command> commandMap;
 
 
     /**
@@ -41,7 +43,7 @@ public class Parser {
      */
     public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
-    public Parser() {}
+    public Parser() {this.commandMap = new HashMap<String, Command>();}
 
     /**
      * Parses user input into command for execution.
@@ -57,36 +59,18 @@ public class Parser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
-
-            case AddCommand.COMMAND_WORD:
-                return prepareAdd(arguments);
-
-            case DeleteCommand.COMMAND_WORD:
-                return prepareDelete(arguments);
-
-            case ClearCommand.COMMAND_WORD:
-                return new ClearCommand();
-
-            case FindCommand.COMMAND_WORD:
-                return prepareFind(arguments);
-
-            case ListCommand.COMMAND_WORD:
-                return new ListCommand();
-
-            case ViewCommand.COMMAND_WORD:
-                return prepareView(arguments);
-
-            case ViewAllCommand.COMMAND_WORD:
-                return prepareViewAll(arguments);
-
-            case ExitCommand.COMMAND_WORD:
-                return new ExitCommand();
-
-            case HelpCommand.COMMAND_WORD: // Fallthrough
-            default:
-                return new HelpCommand();
+        
+        Command currentCommand = commandMap.get(commandWord);
+        if(currentCommand == null){
+            return new HelpCommand();
+        } else {
+            return currentCommand(arguments);
         }
+        
+    }
+    
+    public void addCommand(String commandWord, Command newCommand){
+        commandMap.put(commandWord, newCommand);
     }
 
     /**
