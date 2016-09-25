@@ -8,7 +8,8 @@ import seedu.addressbook.data.tag.UniqueTagList;
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyPerson {
-
+    //Can abstract name, phone, email, address to particular class to reduce coupling,
+    //also makes it easier to implement multiple number of each for a person.
     Name getName();
     Phone getPhone();
     Email getEmail();

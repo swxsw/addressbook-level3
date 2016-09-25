@@ -58,7 +58,9 @@ public class Parser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
-
+            //coupling can be reduced by placing the prepare methods in the command class itself,
+            //so more commands can be abstracted and more commands can be added on the fly
+            //Cohesion can also be increased if the seperate preparations are done in another class
             case AddCommand.COMMAND_WORD:
                 return prepareAdd(arguments);
 
